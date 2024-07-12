@@ -27,6 +27,20 @@ export const useMemberStore = defineStore(
   },
   // TODO: 持久化
   {
-    persist: true,
+    //下方的配置只能在网页端实现持久化。小程序端设置不生效.
+    // persist: true,
+    // 配置小程序的多端持久化
+    persist: {
+      // 调整为兼容多端的API
+      storage: {
+        setItem(key, value) {
+          uni.setStorageSync(key, value) // [!code warning]
+        },
+        getItem(key) {
+          return uni.getStorageSync(key) // [!code warning]
+        },
+      },
+    },
   },
+
 )
