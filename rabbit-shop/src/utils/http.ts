@@ -8,6 +8,8 @@
  */
 // src/utils/http.ts
 
+import { useMemberStore } from '@/stores'
+
 // 请求基地址
 const baseURL = 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
 
@@ -21,6 +23,7 @@ const httpInterceptor = {
     }
     // 2. 请求超时
     options.timeout = 10000
+    console.log('请求拦截内容：', options)
     // 3. 添加小程序端请求头标识
     options.header = {
       'source-client': 'miniapp',
