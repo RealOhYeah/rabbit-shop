@@ -21,14 +21,18 @@ const httpInterceptor = {
     if (!options.url.startsWith('http')) {
       options.url = baseURL + options.url
     }
+
     // 2. 请求超时
     options.timeout = 10000
+
     console.log('请求拦截内容：', options)
+
     // 3. 添加小程序端请求头标识
     options.header = {
       'source-client': 'miniapp',
       ...options.header,
     }
+
     // 4. 添加 token 请求头标识
     const memberStore = useMemberStore()
     const token = memberStore.profile?.token

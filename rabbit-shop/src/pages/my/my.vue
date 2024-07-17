@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMemberStore } from '@/stores'
-import '@/utils/http' 
+import '@/utils/http'
 
 
 const memberStore = useMemberStore()
@@ -9,6 +9,7 @@ const request = () => {
     uni.request({
       method: 'GET',
       url:'/home/banner',
+      header: {}
     })
 }
 
@@ -21,6 +22,7 @@ const request = () => {
     <button
     @tap="memberStore.setProfile({
           nickname: '黑马先锋',
+          token: '12345'
         })
       " size="mini" plain type="primary">
       保存用户信息
